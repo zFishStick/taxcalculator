@@ -4,6 +4,24 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 
+public class TaxCalculator {
+
+	public static double income = 0;
+	public static char contractType = ' ';
+	// social security taxes
+	public static double soc_security = 0; // 9,76% of basis
+	public static double soc_health_security = 0; // 1,5% of basis
+	public static double soc_sick_security = 0; // 2,45% of basis
+	// health-related taxes
+	public static double taxDeductibleExpenses = 111.25; 
+	public static double soc_health1 = 0; // of basis up to 9%
+	public static double soc_health2 = 0; // of basis up to  7,75 %
+	public static double advanceTaxPaidadvanceTax = 0; // advance tax 18%
+	public static double taxFreeIncome = 46.33; // tax-free income monthly 46,33 PLN
+	public static double advanceTaxPaidadvanceTax = 0;
+	public static double advanceTaxPaid0 = 0;
+
+
 public static void main(String[] args) {
 		try {
 			InputStreamReader isr = new InputStreamReader(System.in);
@@ -62,12 +80,12 @@ public static void main(String[] args) {
 					+ df00.format(advanceTaxPaid) + " rounded = "
 					+ df.format(advanceTaxPaid0));
 			double netIncome = income
-					- ((soc_securitys + soc_health_security + soc_sick_security) + soc_health1 + advanceTaxPaid0);
+					- ((soc_security + soc_health_security + soc_sick_security) + soc_health1 + advanceTaxPaid0);
 			System.out.println();
 			System.out
 					.println("Net income = "
 							+ df00.format(netIncome));
-		} else if (umowacontractType == 'C') {
+		} else if (contractType == 'C') {
 			System.out.println("income " + income);
 			double income = calculateIncome(income);
 			System.out.println("Social security tax = "
@@ -100,7 +118,7 @@ public static void main(String[] args) {
 			calculateAdvanceTax();
 			advanceTaxPaid0 = Double.parseDouble(df.format(advanceTaxPaid));
 			System.out.println("Advance tax  = "
-					+ df00.format(advanceTaxPaid) + " roundedu = "
+					+ df00.format(advanceTaxPaid) + " rounded = "
 					+ df.format(advanceTaxPaid0));
 			double netIncome = income
 					- ((soc_security + soc_health_security + soc_sick_security) + soc_health1 + advanceTaxPaid0);
@@ -114,7 +132,7 @@ public static void main(String[] args) {
 	}
 
 	public static void calculateAdvanceTax() {
-		advanceTaxPaidadvanceTax - soc_health2 - taxFreeIncome;
+		advanceTaxPaidadvanceTax = advanceTax - soc_health2 - taxFreeIncome;
 	}
 
 	public static void calculateTax(double income) {
