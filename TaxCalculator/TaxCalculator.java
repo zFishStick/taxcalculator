@@ -11,7 +11,6 @@ import Class.Formatter;
 
 public class TaxCalculator {
 
-	// health-related taxes
 	public static final double TAX_DEDUCTIBLE_EXPENSES = 111.25; 
 	public static double TAX_FREE_INCOME = 46.33; // tax-free income monthly 46,33 PLN
 
@@ -48,7 +47,7 @@ public class TaxCalculator {
 			case CIVIL:
 				TAX_FREE_INCOME = 0;
 				Civil civil = new Civil(income);
-				netIncome = civil.calculateCivilNetIncome();
+				netIncome = civil.calculateNetIncome();
 				break;
 			
 			default:

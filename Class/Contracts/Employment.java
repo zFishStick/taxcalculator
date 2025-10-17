@@ -1,45 +1,25 @@
 package Class.Contracts;
 
-import Class.Formatter;
-import Class.Taxes.HealthTaxes;
-import Class.Taxes.SecurityTaxes;
 import TaxCalculator.TaxCalculator;
 
-public class Employment {
+public class Employment extends Contracts {
 
-    SecurityTaxes securityTaxes = new SecurityTaxes();
-    HealthTaxes healthTaxes = new HealthTaxes();
-    Formatter formatter = new Formatter();
-
-    double income;
-    double taxedIncome;
-    double advanceTax;
-    double advanceTaxPaid;
-    double taxPaid;
-    double netIncome;
-
-    
     public Employment(double income) {
         this.income = income;
-        this.taxedIncome = 0;
-        this.advanceTax = 0;
-        this.advanceTaxPaid = 0;
-        this.taxPaid = 0;
-        this.netIncome = 0;
     }
 
     public double calculateNetIncome() {
-        income = securityTaxes.calculateIncome(income);
+        income = calculateIncome();
         System.out.println("Income basis for health social security: " + income);
 
         healthTaxes.calculateHealthTaxes(income);
-        taxedIncome = (income - TaxCalculator.TAX_DEDUCTIBLE_EXPENSES);
+        taxedIncome = calculateTaxedIncome(TaxCalculator.TAX_DEDUCTIBLE_EXPENSES);
         advanceTax = TaxCalculator.calculateTax(Double.parseDouble(formatter.format_to_df(taxedIncome)));
         taxPaid = calculateTaxPaid(advanceTax, TaxCalculator.TAX_FREE_INCOME);
         advanceTaxPaid = TaxCalculator.calculateAdvanceTax(healthTaxes.calculatedHealth_2);
         netIncome = calculateEmploymentNetIncome(advanceTaxPaid);
 
-        printEmployment();
+        printIncomeDetails();
         return netIncome;
     }
 
@@ -52,7 +32,8 @@ public class Employment {
         return income - (securityTaxes.SecurityTaxesTotal() + healthTaxes.calculatedHealth_1 + roundedAdvanceTaxPaid);
     }
 
-    private void printEmployment() {
+
+    public void printIncomeDetails() {
         System.out.println("================================");
         System.out.println("EMPLOYMENT CONTRACT");
         System.out.println("Income: " + income);

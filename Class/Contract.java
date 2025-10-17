@@ -42,6 +42,7 @@ public class Contract {
                 String firstLetter = type.name().substring(0, 1);
                 System.out.println("(" + firstLetter + ") " + type.name());
             }
+            System.out.print("Input: ");
             
             return new Contract(br.readLine().charAt(0));
         
