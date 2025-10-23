@@ -31,6 +31,6 @@ Following project is a fork of the [original project](https://github.com/bartosz
 
 8. Removed all the print statements from the ```TaxCalculator``` class. Now the print operations are done in the specific contract classes. In this way, the main class looks less confusing and withouth duplicated print statements.
 
-9. Created the asbstract class ```IContracts``` where the common operations and variables are stored. In this way, we reduce the duplication of code and the number of variables in each contract class.
+9. Created the asbstract class ```Contracts``` where the common operations and variables are stored. In this way, we reduce the duplication of code and the number of variables in each contract class.
 
 

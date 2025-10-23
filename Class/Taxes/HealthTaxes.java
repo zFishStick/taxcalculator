@@ -28,13 +28,4 @@ public class HealthTaxes {
         System.out.println("--------------------------------");
     }
 
-    public double getHealthTax_1() {
-        return calculatedHealth_1;
-    }
-
-    public double getHealthTax_2() {
-        System.out.println("Health tax 2: " + calculatedHealth_2);
-        return calculatedHealth_2;
-    }
-
 }

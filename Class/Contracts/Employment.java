@@ -1,7 +1,5 @@
 package Class.Contracts;
 
-import TaxCalculator.TaxCalculator;
-
 public class Employment extends Contracts {
 
     public Employment(double income) {
@@ -13,10 +11,10 @@ public class Employment extends Contracts {
         System.out.println("Income basis for health social security: " + income);
 
         healthTaxes.calculateHealthTaxes(income);
-        taxedIncome = calculateTaxedIncome(TaxCalculator.TAX_DEDUCTIBLE_EXPENSES);
-        advanceTax = TaxCalculator.calculateTax(Double.parseDouble(formatter.format_to_df(taxedIncome)));
-        taxPaid = calculateTaxPaid(advanceTax, TaxCalculator.TAX_FREE_INCOME);
-        advanceTaxPaid = TaxCalculator.calculateAdvanceTax(healthTaxes.calculatedHealth_2);
+        taxedIncome = calculateTaxedIncome(TAX_DEDUCTIBLE_EXPENSES);
+        advanceTax = calculateTax(Double.parseDouble(formatter.format_to_df(taxedIncome)));
+        taxPaid = calculateTaxPaid(advanceTax, TAX_FREE_INCOME);
+        advanceTaxPaid = calculateAdvanceTax(healthTaxes.calculatedHealth_2);
         netIncome = calculateEmploymentNetIncome(advanceTaxPaid);
 
         printIncomeDetails();
@@ -32,22 +30,21 @@ public class Employment extends Contracts {
         return income - (securityTaxes.SecurityTaxesTotal() + healthTaxes.calculatedHealth_1 + roundedAdvanceTaxPaid);
     }
 
-
     public void printIncomeDetails() {
         System.out.println("================================");
         System.out.println("EMPLOYMENT CONTRACT");
         System.out.println("Income: " + income);
         securityTaxes.printSecurityTaxes();
         healthTaxes.printHealthTaxes();
-        System.out.println("Tax deductible expenses = " + TaxCalculator.TAX_DEDUCTIBLE_EXPENSES);
+        System.out.println("Tax deductible expenses = " + TAX_DEDUCTIBLE_EXPENSES);
         System.out.println("Income " + taxedIncome + " Rounded " + formatter.format_to_df(taxedIncome));
         System.out.println("Advance tax 18 % = " + advanceTax);
-        System.out.println("Tax free income = " + TaxCalculator.TAX_FREE_INCOME);
+        System.out.println("Tax free income = " + TAX_FREE_INCOME);
         System.out.println("Reduced tax = " + formatter.format_to_df00(taxPaid));
         System.out.println("Advance tax paid = " + formatter.format_to_df00(advanceTaxPaid) + " Rounded = " + formatter.format_to_df(advanceTaxPaid));
+        System.out.println("Net income = " + formatter.format_to_df00(netIncome));
         System.out.println("================================");
 
-    }
-    
+    }    
 
 }

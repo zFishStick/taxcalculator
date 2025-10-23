@@ -1,12 +1,11 @@
 package Class.Contracts;
 
-import TaxCalculator.TaxCalculator;
 
 public class Civil extends Contracts {
 
-
     public Civil(double income) {
         this.income = income;
+        TAX_FREE_INCOME = 0;
     }
 
     public double calculateTaxDeductibleExpenses() {
@@ -25,9 +24,9 @@ public class Civil extends Contracts {
 
         taxDeductibleExpenses = calculateTaxDeductibleExpenses();
         taxedIncome = calculateTaxedIncome(taxDeductibleExpenses);
-        advanceTax = TaxCalculator.calculateTax(Double.parseDouble(formatter.format_to_df(taxedIncome)));
+        advanceTax = calculateTax(Double.parseDouble(formatter.format_to_df(taxedIncome)));
 
-        advanceTaxPaid = TaxCalculator.calculateAdvanceTax(healthTaxes.calculatedHealth_2);
+        advanceTaxPaid = calculateAdvanceTax(healthTaxes.calculatedHealth_2);
 
         netIncome = calculateNetIncome(advanceTaxPaid);
 
@@ -47,8 +46,8 @@ public class Civil extends Contracts {
         System.out.println("Advance tax 18 % = " + advanceTax);
         System.out.println("Already paid tax = " + taxPaid);
         System.out.println("Advance tax = " + formatter.format_to_df00(advanceTax) + " Rounded = " + formatter.format_to_df(advanceTax));
+        System.out.println("Net income = " + formatter.format_to_df00(netIncome));
         System.out.println("================================");
     }
-
 
 }
